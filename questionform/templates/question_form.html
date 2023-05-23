@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <script defer src="{% static 'js/jquery.js' %}"></script>
     <script defer src="{% static 'js/front.js' %}"></script>
-    <input type="hidden" id="dict" name="variable" value="{{ dict_div_comp }}">
-    <input type="hidden" hidden="True" id="comp" name="variable" value="{{ choice_comp }}">
+    <input type="hidden" id="dict" name="variable" value="{{ division_to_companies }}">
+    <input type="hidden" hidden="True" id="comp" name="variable" value="{{ chosen_comp }}">
   </head>
   <body>
     <header>
@@ -24,35 +24,35 @@
           <form method="post" enctype="multipart/form-data" action="{% url 'form:question_create' %}">
             <div class="form-group row my-3 p-3">  
               <label>
-                {{ form_cq.division.help_text }}
+                {{ form_question.division.help_text }}
                 <span class="required text-danger" >*</span>
               </label>
-              <div onchange="get_comp()">
-               {{ form_cq.division }}
+              <div onchange="set_companies()">
+               {{ form_question.division }}
               </div>
               <label>
-                {{ form_cq.company.help_text }}
+                {{ form_question.company.help_text }}
                 <span class="required text-danger" >*</span> 
               </label>
-              <div id="comp" onchange="new_comp()">
-                {{ form_cq.company }}
+              <div id="comp" onchange="conpany_onchange()">
+                {{ form_question.company }}
               </div>
               <div id="new_comp" hidden="True">
                 <label>
-                  {{ form_cq.title.help_text }}
+                  {{ form_question.title.help_text }}
                   <span class="required text-danger" >*</span> 
                 </label>
-                {{ form_cq.title }}
+                {{ form_question.title }}
               </div>
               <label>
-                {{ form_cq.email.help_text }}
+                {{ form_question.email.help_text }}
               </label>
-              {{ form_cq.email }}
+              {{ form_question.email }}
               <label>
-              {{ form_cq.text.help_text }}
+              {{ form_question.text.help_text }}
                 <span class="required text-danger" >*</span>
               </label>
-              {{ form_cq.text }}
+              {{ form_question.text }}
             </div>
             <div class="d-flex justify-content-end">
               <button type="submit" class="btn btn-primary">

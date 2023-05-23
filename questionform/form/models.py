@@ -17,17 +17,14 @@ class Company(models.Model):
     title = models.CharField(
         'Название предприятия',
         unique=True,
-        blank=False,
         max_length=200,
         help_text='Название предприятия'
     )
     division = models.ForeignKey(
         Division,
         on_delete=models.PROTECT,
-        blank=False,
-        null=False,
         verbose_name='Дивизион',
-        related_name='company',
+        related_name='companies',
         help_text='Выберите ваш дивизион'
     )
 
@@ -46,8 +43,6 @@ class Question(models.Model):
     company = models.ForeignKey(
         Company,
         on_delete=models.CASCADE,
-        blank=False,
-        null=False,
         verbose_name='Предприятие',
         related_name='questions',
         help_text='Выберите ваше предприятие'

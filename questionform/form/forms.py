@@ -27,21 +27,23 @@ def validate_email(еmail):
 
 class CompanyQuestionForm(forms.Form):
     division = forms.ModelChoiceField(
-        widget=forms.Select(attrs={'id': 'id_form_division', }),
+        widget=forms.Select(attrs={'id': 'id_form_division'}),
         queryset=Division.objects.all(),
         help_text='Выберите ваш дивизион'
         )
     company = forms.ChoiceField(
-        widget=forms.Select(attrs={'id': 'id_form_company', }),
+        widget=forms.Select(attrs={'id': 'id_form_company'}),
         choices=get_list_comp,
         help_text='Выберите ваше предприятие'
         )
-    title = forms.CharField(widget=forms.TextInput(attrs={'id': 'id_form_title', }),
+    title = forms.CharField(widget=forms.TextInput(attrs={'id': 'id_form_title'}),
                             max_length=200,
                             help_text='Название предприятия',
                             required=False
                             )
-    email = forms.EmailField(help_text='Если вы хотите лично получить ответ на ваш вопрос, оставьте электронную почту, на которую необходимо отправить ответ (можно не корпоративную)',
+    email = forms.EmailField(help_text=('Если вы хотите лично получить ответ на ваш вопрос, '
+                                        'оставьте электронную почту, на которую необходимо '
+                                        'отправить ответ (можно не корпоративную)'),
                              validators=[validate_email],
                              required=False
                              )
