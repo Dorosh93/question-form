@@ -10,15 +10,17 @@ from .forms import CompanyQuestionForm
 @csrf_exempt
 def question_create(request):
     form_question = CompanyQuestionForm(request.POST or None)
-    chosen_comp = ''  # проверить None
+    chosen_comp = ''
     if request.method == 'POST':
         valid = form_question.is_valid()
+        # print(form_question)
         chosen_comp = form_question.cleaned_data['company']
         if valid:
             title_form = form_question.cleaned_data['title']
             division_form = form_question.cleaned_data['division']
             if (chosen_comp == 'другое' and Company.objects.filter(
-                 division=division_form, title=title_form) == []):
+                 division=division_form, title=title_form).exists() == False):
+                # проверка, что вводимой компании нет в выпадающем списке
                 compan = Company(
                     title=title_form,
                     division=division_form

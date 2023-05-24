@@ -13,7 +13,7 @@ def get_list_comp():
 
 def validate_email(еmail):
     if еmail[-3:] != '.ru':
-        raise ValidationError('Введите почту из домена .ru')
+        raise ValidationError('Укажите почту с доменом из зоны .ru')
 
 
 class CompanyQuestionForm(forms.Form):

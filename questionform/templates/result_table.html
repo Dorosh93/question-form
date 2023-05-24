@@ -3,7 +3,11 @@
   <head>
     {% load static %}
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
-    
+    <style>
+      .table2 {
+        width: 65%;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -11,7 +15,7 @@
     <main>
       <div class="container py-5">
         <table class="table table-bordered">
-          <thead>
+          <thead class="text-center">
             <tr>
               <th scope="col" width="20%">Время дата</th>
               <th scope="col" width="20%">Предприятие</th>
@@ -22,28 +26,28 @@
           <tbody>
             {% for question in questions_from_companies %}
               <tr>
-                <th>{{ question.0|date:"d E Y h:m:s" }}</th>
-                <th>{{ question.1 }}</th>
-                <th>{{ question.2 }}</th>
-                <th>{{ question.3 }}</th>
+                <td class="text-center">{{ question.0|date:"d.m.Y H:i:s" }}</td>
+                <td>{{ question.1 }}</td>
+                <td>{{ question.2 }}</td>
+                <td>{{ question.3 }}</td>
               </tr>
             {% endfor %}
           </tbody>
         </table>
-        <table class="table table-bordered w-75">
-          <thead>
+        <table class="table table2 table-bordered">
+          <thead class="text-center">
             <tr>
               <th scope="col" width="30%">Дивизион</th>
-              <th scope="col" width="30%">Предприятие</th>
-              <th scope="col" width="40%">Количество поданных вопросов</th>
+              <th scope="col" width="35%">Предприятие</th>
+              <th scope="col" width="35%">Количество поданных вопросов</th>
             </tr>
           </thead>
           <tbody>
             {% for company in count_questions_conpany %}
               <tr>
-                <th>{{ company.0 }}</th>
-                <th>{{ company.1 }}</th>
-                <th>{{ company.2 }}</th>
+                <td>{{ company.0 }}</td>
+                <td>{{ company.1 }}</td>
+                <td class="text-center">{{ company.2 }}</td>
               </tr>
             {% endfor %}
           </tbody>

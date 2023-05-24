@@ -11,52 +11,78 @@
       .hidden {
           visibility: hidden;
       }
-      select2 {
+      .select1 select {
         width: 60%;
       }
-
+      .select2 select {
+        width: 75%;
+      }
+      .input_text input {
+        width: 70%;
+      }
+      .text_area textarea {
+        width: 100%;
+      }
     </style>
   </head>
   <body>
     <header>
+      <div class="container">
+        <img src="{% static 'img/logo.png' %}" width="150" height="30">
+      </div>
+      <hr>
     </header>
     <main>
         <div class="container py-5">
-          <h3>
+          <div class="display-6">
             Форма для вопросов на День Директора
-          </h3>
+          </div>
           <form method="post" enctype="multipart/form-data" action="{% url 'form:question_create' %}">
-            <div class="form-group row my-3 p-3">  
-              <label>
-                {{ form_question.division.help_text }}
-                <span class="required text-danger" >*</span>
-              </label>
-              <div onchange="set_companies()">
-               {{ form_question.division }}
-              </div>
-              <label>
-                {{ form_question.company.help_text }}
-                <span class="required text-danger" >*</span> 
-              </label>
-              <form onchange="conpany_onchange()">
-                {{ form_question.company }}
-              </form>
-              <div id="new_comp" hidden="True">
-                <label>
-                  {{ form_question.title.help_text }}
-                  <span class="required text-danger" >*</span> 
-                </label><br>
-                {{ form_question.title }}
-              </div>
-              <label>
-                {{ form_question.email.help_text }}
-              </label>
-              {{ form_question.email }}
-              <label>
-              {{ form_question.text.help_text }}
-                <span class="required text-danger" >*</span>
-              </label>
-              {{ form_question.text }}
+            <div class="form-group row my-3">  
+              <p>
+                <div>
+                  <strong>{{ form_question.division.help_text }}</strong>
+                  <span class="required text-danger">*</span>
+                </div>
+                <div class="select1" onchange="set_companies()">
+                {{ form_question.division }}
+                </div>
+              <p/>
+              <p>
+                <div>
+                  <strong>{{ form_question.company.help_text }}</strong>
+                  <span class="required text-danger">*</span> 
+                </div>
+                <div class="select2" onchange="conpany_onchange()">
+                  {{ form_question.company }}
+                </div>
+              </p>
+              <p>
+                <div class="input_text" id="new_comp" hidden="True">
+                  <strong>{{ form_question.title.help_text }}</strong>
+                  <span class="required text-danger">*</span>
+                  <br> 
+                  {{ form_question.title }}
+                </div>
+              </p>
+              <p>
+                <div>
+                  <strong>{{ form_question.email.help_text }}</strong>
+                </div>
+                <div class="input_text">
+                  {{ form_question.email }}
+                  <span class="required text-danger">{{ form_question.email.errors }}</span>
+                </div>
+              </p>
+              <p>
+                <div>
+                  <strong>{{ form_question.text.help_text }}<strong>
+                  <span class="required text-danger">*</span>
+                </div>
+                <div class="text_area">
+                  {{ form_question.text }}
+                </div>
+              </p>
             </div>
             <div class="d-flex justify-content-end">
               <button type="submit" class="btn btn-primary">
