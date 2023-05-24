@@ -8,7 +8,21 @@
 
 Доступ к "админке" "admin/": Username: admin, Password: password.
 
-## Загрузка базы
+## Загрузка базы и запуск приложения
+
+Cоздать и активировать виртуальное окружение:
+
+```
+python -m venv venv
+
+source venv/bin/activate
+```
+
+Установить зависимости из файла requirements.txt:
+
+```
+pip install -r requirements.txt
+```
 
 Перейти в основную папку и выполнить миграции:
 
