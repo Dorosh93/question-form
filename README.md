@@ -9,4 +9,31 @@
 
 Доступ к "админке" admin password.
 
+## Загрузка базы
+
+Перейти в основную папку и выполнить миграции:
+
+```
+cd  question-form
+```
+
+Выполнить миграцию:
+
+```
+python manage.py migrate
+```
+
+Заполненить базу данных из db.json:
+
+```
+python manage.py loaddata db.json
+```
+
+Запустить проект:
+
+```
+python manage.py runserver
+```
+
+
 Разработал Виктор Дорошенко
