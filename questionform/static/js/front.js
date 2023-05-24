@@ -19,13 +19,13 @@ function conpany_onchange() {
 }
 
 function set_companies() {
-    const division = $('#id_form_division :selected').text();
+    let division = $('#id_form_division :selected').text();
     const division_to_companies = JSON.parse(document.getElementById('dict').value);
     if (division === '---------'){
-        const list_comp = [];
+        var list_comp = [];
     } else{
-        let list_comp = division_to_companies[division];
-        list_comp[list_comp.length] = 'другое'
+        var list_comp = division_to_companies[division];
+        list_comp[list_comp.length] = 'другое';
     }
     $('#id_form_company').find('option').remove();
     for (let i = 0; i < list_comp.length; i++) {

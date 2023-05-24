@@ -7,6 +7,15 @@
     <script defer src="{% static 'js/front.js' %}"></script>
     <input type="hidden" id="dict" name="variable" value="{{ division_to_companies }}">
     <input type="hidden" hidden="True" id="comp" name="variable" value="{{ chosen_comp }}">
+    <style>
+      .hidden {
+          visibility: hidden;
+      }
+      select2 {
+        width: 60%;
+      }
+
+    </style>
   </head>
   <body>
     <header>
@@ -16,11 +25,6 @@
           <h3>
             Форма для вопросов на День Директора
           </h3>
-          <style>
-            .hidden {
-                visibility: hidden;
-            }
-          </style>
           <form method="post" enctype="multipart/form-data" action="{% url 'form:question_create' %}">
             <div class="form-group row my-3 p-3">  
               <label>
@@ -34,14 +38,14 @@
                 {{ form_question.company.help_text }}
                 <span class="required text-danger" >*</span> 
               </label>
-              <div id="comp" onchange="conpany_onchange()">
+              <form onchange="conpany_onchange()">
                 {{ form_question.company }}
-              </div>
+              </form>
               <div id="new_comp" hidden="True">
                 <label>
                   {{ form_question.title.help_text }}
                   <span class="required text-danger" >*</span> 
-                </label>
+                </label><br>
                 {{ form_question.title }}
               </div>
               <label>

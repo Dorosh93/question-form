@@ -38,7 +38,7 @@ class Company(models.Model):
 class Question(models.Model):
     text = models.TextField(
         'Текст вопроса',
-        help_text='Задайте ваш вопрос генеральному директору Госкорпорации "Росатом" А.Е. Лихачеву'
+        help_text='Текст вопроса'
     )
     company = models.ForeignKey(
         Company,
@@ -57,8 +57,8 @@ class Question(models.Model):
         unique=False,
         blank=True,
         null=True,
-        verbose_name='Электронная почта',
-        help_text='Если вы хотите лично получить ответ на ваш вопрос, оставьте электронную почту, на которую необходимо отправить ответ (можно не корпоративную)'
+        verbose_name='E-mail',
+        help_text='E-mail'
     )
 
     class Meta:
