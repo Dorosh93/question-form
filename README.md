@@ -6,7 +6,7 @@
 Доступ к форме задания вопроса осуществляется по пути "/".
 К формам таблиц по пути "result/".
 
-Доступ к "админке" "admin/": admin: admin, passeord: password.
+Доступ к "админке" "admin/": Username: admin, Password: password.
 
 ## Загрузка базы
 
