@@ -15,11 +15,7 @@
 
 ```
 cd  question-form
-```
 
-Выполнить миграцию:
-
-```
 python manage.py migrate
 ```
 
