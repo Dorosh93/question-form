@@ -27,7 +27,7 @@ pip install -r requirements.txt
 Перейти в основную папку и выполнить миграции:
 
 ```
-cd  question-form
+cd  questionform
 
 python manage.py migrate
 ```
